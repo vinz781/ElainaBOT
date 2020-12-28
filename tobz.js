@@ -746,6 +746,16 @@ module.exports = tobz = async (tobz, message) => {
                 tobz.reply(from, 'Maaf, Server sedang Error')
             }
             break
+        case prefix+'pastebin': //BY VINZ
+        if(isReg(obj)) return
+        if(cekumur(cekage)) return
+        if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik ${prefix}limit Untuk Mengecek Kuota Limit Kamu`, id)
+        if (args.length == 1) return client.reply(from, 'Ketik command #pasrtebin [text]|[nama]\nContoh #pastebin ini contohnya|#contoh1', id)
+        await client.reply(from, mess.wait, id)
+        var bdtrm = body.trim().split('|')
+        const pstbn = await axios.get(`https://zeksapi.herokuapp.com/api/pastebin?apikey=tobz2020&text=${bdtrm[0]}&name=${bdtrm[1]}`)
+        await client.reply(from, pstbn.data.result, id)
+            break
         case prefix+'magernulis1': // BY MFARELS
                 if(isReg(obj)) return
                 if(cekumur(cekage)) return
